@@ -1,46 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_MYSQL",
-      "label": "MySQL",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "mysql",
-      "pluginName": "MySQL"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "6.5.1"
-    },
-    {
-      "type": "panel",
-      "id": "grafana-piechart-panel",
-      "name": "Pie Chart",
-      "version": "1.3.9"
-    },
-    {
-      "type": "datasource",
-      "id": "mysql",
-      "name": "MySQL",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "singlestat",
-      "name": "Singlestat",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "table",
-      "name": "Table",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -57,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": null,
+  "id": 1,
   "links": [],
   "panels": [
     {
@@ -71,7 +29,7 @@
         "#73BF69",
         "#d44a3a"
       ],
-      "datasource": "${DS_MYSQL}",
+      "datasource": null,
       "decimals": 2,
       "format": "short",
       "gauge": {
@@ -177,7 +135,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "${DS_MYSQL}",
+      "datasource": null,
       "decimals": 2,
       "format": "short",
       "gauge": {
@@ -282,7 +240,7 @@
         "label": "Others",
         "threshold": 0
       },
-      "datasource": "${DS_MYSQL}",
+      "datasource": "MySQL",
       "fontSize": "80%",
       "format": "short",
       "gridPos": {
@@ -298,7 +256,7 @@
         "show": true,
         "values": true
       },
-      "legendType": "Under graph",
+      "legendType": "Right side",
       "links": [],
       "maxDataPoints": 3,
       "nullPointMode": "connected",
@@ -311,7 +269,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT DISTINCT SUBSTRING_INDEX(url,'?', 1) AS resource, COUNT(SUBSTRING_INDEX(url,'?', 1)) AS resource_count, now() as time_sec FROM fastly GROUP BY SUBSTRING_INDEX(url,'?', 1) ORDER BY resource_count DESC limit 50;",
+          "rawSql": "SELECT DISTINCT SUBSTRING_INDEX(url,'?', 1) AS resource, COUNT(SUBSTRING_INDEX(url,'?', 1)) AS resource_count, now() as time_sec FROM fastly GROUP BY SUBSTRING_INDEX(url,'?', 1) ORDER BY resource_count DESC limit 100;",
           "refId": "A",
           "select": [
             [
@@ -335,7 +293,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Most Common Requests",
+      "title": "Top 100 Requests",
       "type": "grafana-piechart-panel",
       "valueName": "current"
     },
@@ -347,7 +305,7 @@
         "label": "Others",
         "threshold": 0
       },
-      "datasource": "${DS_MYSQL}",
+      "datasource": null,
       "fontSize": "80%",
       "format": "short",
       "gridPos": {
@@ -359,10 +317,12 @@
       "id": 11,
       "interval": null,
       "legend": {
+        "percentage": true,
         "show": true,
+        "sideWidth": null,
         "values": true
       },
-      "legendType": "Under graph",
+      "legendType": "Right side",
       "links": [],
       "maxDataPoints": 3,
       "nullPointMode": "connected",
@@ -375,7 +335,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT now() as time_sec, ip, COUNT(ip) AS ip_count FROM fastly GROUP BY ip ORDER BY ip_count DESC limit 50;",
+          "rawSql": "SELECT now() as time_sec, ip, COUNT(ip) AS ip_count FROM fastly GROUP BY ip ORDER BY ip_count DESC limit 100;",
           "refId": "A",
           "select": [
             [
@@ -399,7 +359,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Most Common IPs",
+      "title": "Top 100 IPs",
       "type": "grafana-piechart-panel",
       "valueName": "current"
     },
@@ -411,7 +371,7 @@
         "label": "Others",
         "threshold": 0
       },
-      "datasource": "${DS_MYSQL}",
+      "datasource": "MySQL",
       "description": "Break down by unique user agents.",
       "fontSize": "80%",
       "format": "short",
@@ -440,7 +400,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT DISTINCT user_agent, COUNT(user_agent) AS user_agent_count, now() as time_sec FROM fastly GROUP BY user_agent ORDER BY user_agent_count DESC limit 50;",
+          "rawSql": "SELECT DISTINCT user_agent, COUNT(user_agent) AS user_agent_count, now() as time_sec FROM fastly GROUP BY user_agent ORDER BY user_agent_count DESC limit 100;",
           "refId": "A",
           "select": [
             [
@@ -464,13 +424,13 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Most Common User Agents",
+      "title": "Top 100 User Agents",
       "type": "grafana-piechart-panel",
       "valueName": "current"
     },
     {
       "columns": [],
-      "datasource": "${DS_MYSQL}",
+      "datasource": "MySQL",
       "description": "Break down by unique user agents.",
       "fontSize": "100%",
       "gridPos": {
@@ -545,7 +505,7 @@
     },
     {
       "columns": [],
-      "datasource": "${DS_MYSQL}",
+      "datasource": "MySQL",
       "fontSize": "100%",
       "gridPos": {
         "h": 8,
@@ -620,7 +580,7 @@
     {
       "cacheTimeout": null,
       "columns": [],
-      "datasource": "${DS_MYSQL}",
+      "datasource": null,
       "description": "Detects wp-login and xmlrpc",
       "fontSize": "100%",
       "gridPos": {
@@ -693,7 +653,7 @@
     },
     {
       "columns": [],
-      "datasource": "${DS_MYSQL}",
+      "datasource": null,
       "fontSize": "100%",
       "gridPos": {
         "h": 9,
@@ -767,7 +727,7 @@
     },
     {
       "columns": [],
-      "datasource": "${DS_MYSQL}",
+      "datasource": "MySQL",
       "fontSize": "100%",
       "gridPos": {
         "h": 9,
@@ -867,5 +827,5 @@
   "timezone": "",
   "title": "Fastly Dashboard",
   "uid": "mSJmdQ-Zz",
-  "version": 9
+  "version": 10
 }
