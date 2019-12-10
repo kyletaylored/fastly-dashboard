@@ -1,0 +1,13 @@
+name: fastly-grafana
+recipe: lamp
+config:
+  webroot: .
+services:
+  my-service:
+    type: mysql
+    portforward: 32769
+    creds:
+      user: fastly
+      password: fastly
+      database: fastly
+      
