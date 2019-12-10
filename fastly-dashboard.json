@@ -573,7 +573,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Unique Requests",
+      "title": "Unique Requests (Clean Params)",
       "transform": "table",
       "type": "table"
     },
@@ -697,7 +697,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT url, COUNT(url) AS ip_count FROM fastly WHERE url LIKE '%.php%' or url LIKE '%.xml%' or url LIKE '%json%' GROUP BY url ORDER BY ip_count DESC;",
+          "rawSql": "SELECT url, COUNT(url) AS ip_count FROM fastly WHERE url LIKE '%.php%' or url LIKE '%xml%' or url LIKE '%json%' GROUP BY url ORDER BY ip_count DESC;",
           "refId": "A",
           "select": [
             [
@@ -804,7 +804,28 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "fastly",
+          "value": "fastly"
+        },
+        "hide": 2,
+        "label": "Database Table",
+        "name": "db_table",
+        "options": [
+          {
+            "selected": true,
+            "text": "fastly",
+            "value": "fastly"
+          }
+        ],
+        "query": "fastly",
+        "skipUrlSync": false,
+        "type": "constant"
+      }
+    ]
   },
   "time": {
     "from": "now-6h",
