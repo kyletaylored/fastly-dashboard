@@ -16,6 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
+  "iteration": 1576015729033,
   "links": [],
   "panels": [
     {
@@ -89,7 +90,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT COUNT(DISTINCT CONCAT(ip,user_agent)) AS visitors_count FROM fastly;",
+          "rawSql": "SELECT COUNT(DISTINCT CONCAT(ip,user_agent)) AS visitors_count FROM $db_table;",
           "refId": "A",
           "select": [
             [
@@ -195,7 +196,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT COUNT(url) AS pages_served_count FROM fastly;",
+          "rawSql": "SELECT COUNT(url) AS pages_served_count FROM $db_table;",
           "refId": "A",
           "select": [
             [
@@ -240,7 +241,7 @@
         "label": "Others",
         "threshold": 0
       },
-      "datasource": "MySQL",
+      "datasource": null,
       "fontSize": "80%",
       "format": "short",
       "gridPos": {
@@ -269,7 +270,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT DISTINCT SUBSTRING_INDEX(url,'?', 1) AS resource, COUNT(SUBSTRING_INDEX(url,'?', 1)) AS resource_count, now() as time_sec FROM fastly GROUP BY SUBSTRING_INDEX(url,'?', 1) ORDER BY resource_count DESC limit 100;",
+          "rawSql": "SELECT DISTINCT SUBSTRING_INDEX(url,'?', 1) AS resource, COUNT(SUBSTRING_INDEX(url,'?', 1)) AS resource_count, now() as time_sec FROM $db_table GROUP BY SUBSTRING_INDEX(url,'?', 1) ORDER BY resource_count DESC limit 100;",
           "refId": "A",
           "select": [
             [
@@ -335,7 +336,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT now() as time_sec, ip, COUNT(ip) AS ip_count FROM fastly GROUP BY ip ORDER BY ip_count DESC limit 100;",
+          "rawSql": "SELECT now() as time_sec, ip, COUNT(ip) AS ip_count FROM $db_table GROUP BY ip ORDER BY ip_count DESC limit 100;",
           "refId": "A",
           "select": [
             [
@@ -371,7 +372,7 @@
         "label": "Others",
         "threshold": 0
       },
-      "datasource": "MySQL",
+      "datasource": null,
       "description": "Break down by unique user agents.",
       "fontSize": "80%",
       "format": "short",
@@ -400,7 +401,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT DISTINCT user_agent, COUNT(user_agent) AS user_agent_count, now() as time_sec FROM fastly GROUP BY user_agent ORDER BY user_agent_count DESC limit 100;",
+          "rawSql": "SELECT DISTINCT user_agent, COUNT(user_agent) AS user_agent_count, now() as time_sec FROM $db_table GROUP BY user_agent ORDER BY user_agent_count DESC limit 100;",
           "refId": "A",
           "select": [
             [
@@ -430,7 +431,7 @@
     },
     {
       "columns": [],
-      "datasource": "MySQL",
+      "datasource": null,
       "description": "Break down by unique user agents.",
       "fontSize": "100%",
       "gridPos": {
@@ -475,7 +476,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT DISTINCT user_agent, COUNT(user_agent) AS user_agent_count FROM fastly GROUP BY user_agent ORDER BY user_agent_count DESC;",
+          "rawSql": "SELECT DISTINCT user_agent, COUNT(user_agent) AS user_agent_count FROM $db_table GROUP BY user_agent ORDER BY user_agent_count DESC;",
           "refId": "A",
           "select": [
             [
@@ -505,7 +506,7 @@
     },
     {
       "columns": [],
-      "datasource": "MySQL",
+      "datasource": null,
       "fontSize": "100%",
       "gridPos": {
         "h": 8,
@@ -549,7 +550,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT DISTINCT SUBSTRING_INDEX(url,'?', 1) AS resource, COUNT(SUBSTRING_INDEX(url,'?', 1)) AS resource_count FROM fastly GROUP BY SUBSTRING_INDEX(url,'?', 1) ORDER BY resource_count DESC;",
+          "rawSql": "SELECT DISTINCT SUBSTRING_INDEX(url,'?', 1) AS resource, COUNT(SUBSTRING_INDEX(url,'?', 1)) AS resource_count FROM $db_table GROUP BY SUBSTRING_INDEX(url,'?', 1) ORDER BY resource_count DESC;",
           "refId": "A",
           "select": [
             [
@@ -628,7 +629,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT ip, COUNT(ip) AS ip_count FROM fastly WHERE url LIKE '/wp-login.php%' or url like '/xmlrpc%' GROUP BY ip ORDER BY ip_count DESC;",
+          "rawSql": "SELECT ip, COUNT(ip) AS ip_count FROM $db_table WHERE url LIKE '/wp-login.php%' or url like '/xmlrpc%' GROUP BY ip ORDER BY ip_count DESC;",
           "refId": "A",
           "select": [
             [
@@ -697,7 +698,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT url, COUNT(url) AS ip_count FROM fastly WHERE url LIKE '%.php%' or url LIKE '%xml%' or url LIKE '%json%' GROUP BY url ORDER BY ip_count DESC;",
+          "rawSql": "SELECT url, COUNT(url) AS ip_count FROM $db_table WHERE url LIKE '%php%' or url LIKE '%xml%' or url LIKE '%json%' GROUP BY url ORDER BY ip_count DESC;",
           "refId": "A",
           "select": [
             [
@@ -727,7 +728,7 @@
     },
     {
       "columns": [],
-      "datasource": "MySQL",
+      "datasource": null,
       "fontSize": "100%",
       "gridPos": {
         "h": 9,
@@ -771,7 +772,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT DISTINCT url, COUNT(url) AS url_served_count FROM fastly GROUP BY url ORDER BY url_served_count DESC;",
+          "rawSql": "SELECT DISTINCT url, COUNT(url) AS url_served_count FROM $db_table GROUP BY url ORDER BY url_served_count DESC;",
           "refId": "A",
           "select": [
             [
@@ -806,24 +807,51 @@
   "templating": {
     "list": [
       {
+        "allValue": null,
         "current": {
-          "selected": false,
-          "text": "fastly",
-          "value": "fastly"
+          "tags": [],
+          "text": "mtns_12_6_2019",
+          "value": "mtns_12_6_2019"
         },
-        "hide": 2,
-        "label": "Database Table",
+        "datasource": "MySQL",
+        "definition": "SELECT table_name FROM information_schema.tables WHERE table_type = 'base table'",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Client Table",
+        "multi": false,
         "name": "db_table",
         "options": [
           {
-            "selected": true,
+            "selected": false,
+            "text": "clientname",
+            "value": "clientname"
+          },
+          {
+            "selected": false,
             "text": "fastly",
             "value": "fastly"
+          },
+          {
+            "selected": true,
+            "text": "mtns_12_6_2019",
+            "value": "mtns_12_6_2019"
+          },
+          {
+            "selected": false,
+            "text": "shoneys",
+            "value": "shoneys"
           }
         ],
-        "query": "fastly",
+        "query": "SELECT table_name FROM information_schema.tables WHERE table_type = 'base table'",
+        "refresh": 0,
+        "regex": "",
         "skipUrlSync": false,
-        "type": "constant"
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       }
     ]
   },
@@ -848,5 +876,5 @@
   "timezone": "",
   "title": "Fastly Dashboard",
   "uid": "mSJmdQ-Zz",
-  "version": 10
+  "version": 15
 }
