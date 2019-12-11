@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1576015729033,
+  "iteration": 1576088098545,
   "links": [],
   "panels": [
     {
@@ -810,8 +810,8 @@
         "allValue": null,
         "current": {
           "tags": [],
-          "text": "mtns_12_6_2019",
-          "value": "mtns_12_6_2019"
+          "text": "shoneys",
+          "value": "shoneys"
         },
         "datasource": "MySQL",
         "definition": "SELECT table_name FROM information_schema.tables WHERE table_type = 'base table'",
@@ -832,12 +832,12 @@
             "value": "fastly"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "mtns_12_6_2019",
             "value": "mtns_12_6_2019"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "shoneys",
             "value": "shoneys"
           }
