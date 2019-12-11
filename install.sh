@@ -3,6 +3,10 @@ function command_exists () {
     type "$1" &> /dev/null ;
 }
 
+function app_exists() {
+    open -Ra "$1" &> /dev/null
+}
+
 # Download the repository
 git clone https://github.com/kyletaylored/fastly-dashboard
 
@@ -42,6 +46,14 @@ if ! command_exists goaccess; then
     brew install goaccess
 else
     echo "goaccess is installed."
+fi
+
+# Check for Sequel Pro
+if ! app_exists "Sequel Pro.app"; then
+    echo "Sequel Pro is not installed, attempting to install..."
+    brew cask install sequel-pro
+else
+    echo "Sequel Pro is installed."
 fi
 
 # Start Lando containers.
