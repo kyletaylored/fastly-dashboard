@@ -1,0 +1,5 @@
+# Logs directory from access script
+logs/*
+
+# Any residual CSV files.
+*.csv
