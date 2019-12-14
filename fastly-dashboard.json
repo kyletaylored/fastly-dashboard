@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1576088098545,
+  "iteration": 1576298619246,
   "links": [],
   "panels": [
     {
@@ -810,8 +810,8 @@
         "allValue": null,
         "current": {
           "tags": [],
-          "text": "shoneys",
-          "value": "shoneys"
+          "text": "default",
+          "value": "default"
         },
         "datasource": "MySQL",
         "definition": "SELECT table_name FROM information_schema.tables WHERE table_type = 'base table'",
@@ -820,30 +820,9 @@
         "label": "Client Table",
         "multi": false,
         "name": "db_table",
-        "options": [
-          {
-            "selected": false,
-            "text": "clientname",
-            "value": "clientname"
-          },
-          {
-            "selected": false,
-            "text": "fastly",
-            "value": "fastly"
-          },
-          {
-            "selected": false,
-            "text": "mtns_12_6_2019",
-            "value": "mtns_12_6_2019"
-          },
-          {
-            "selected": true,
-            "text": "shoneys",
-            "value": "shoneys"
-          }
-        ],
+        "options": [],
         "query": "SELECT table_name FROM information_schema.tables WHERE table_type = 'base table'",
-        "refresh": 0,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 1,
@@ -876,5 +855,5 @@
   "timezone": "",
   "title": "Fastly Dashboard",
   "uid": "mSJmdQ-Zz",
-  "version": 15
+  "version": 16
 }
