@@ -3,7 +3,7 @@ recipe: lamp
 config:
   webroot: .
 services:
-  my-service:
+  database:
     type: mysql
     portforward: 32769
     creds:
