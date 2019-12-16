@@ -1,13 +1,24 @@
 name: fastly-grafana
-recipe: lamp
 config:
   webroot: .
+proxy:
+  grafana:
+    - grafana.lndo.site
 services:
-  my-service:
+  database:
     type: mysql
     portforward: 32769
     creds:
       user: fastly
       password: fastly
       database: fastly
-      
+  grafana:
+    type: compose
+    services:
+      image: grafana/grafana
+      ports:
+        - '3000:80'
+      environment:
+        GF_INSTALL_PLUGINS: grafana-piechart-panel
+      # Required. See Below
+      command: ./update-dashboards.sh
