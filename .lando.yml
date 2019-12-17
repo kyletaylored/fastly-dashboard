@@ -1,9 +1,7 @@
 name: fastly-grafana
-config:
-  webroot: .
 proxy:
   grafana:
-    - grafana.lndo.site
+    - grafana.lndo.site:3000
 services:
   database:
     type: mysql
@@ -16,9 +14,9 @@ services:
     type: compose
     services:
       image: grafana/grafana
-      ports:
-        - '3000:80'
+      user: grafana
+      ports: [3000:3000]
       environment:
         GF_INSTALL_PLUGINS: grafana-piechart-panel
-      # Required. See Below
-      command: ./update-dashboards.sh
+      # Required (entry point for Grafana container)
+      command: /run.sh
