@@ -1,13 +1,12 @@
-# Grafana / Fastly on macOS
+# Grafana Dashboard on Lando
 Nicer traffic reports than spreadsheets.
 
 ### Sytem Requirements
- * [Lando](https://lando.dev) (or at least Docker)
- * [Homebrew](https://brew.sh)
- * [Grafana](https://grafana.com/docs/grafana/latest/installation/mac/) (steps below)
+ * [Lando](https://lando.dev)
+ * [Homebrew (optional)](https://brew.sh)
  * Don't forget to bring a traffic CSV file to import
 
-## Install Dependencies.
+## Install Dependencies
 
 ### Auto-install
 Run the following script to download the repository and auto-install the dependencies.
@@ -31,6 +30,10 @@ If you don't have Lando, first install it through Homebrew, or [follow the onlin
 brew cask install lando
 ```
 
+## Create Containers
+
+### 1. Start Lando
+
 If you do have it, just start Lando using the provided lando.yml.
 ```bash
 lando start
@@ -42,15 +45,15 @@ At this point, a number of things are happening:
 2. Grafana is being proxied through `http://grafana.lndo.site`.
 3. Datasource and dashboards are being provisioned and imported.
 
-#### 3. Log into Grafana
+### 2. Log into Grafana
 
 Open the localhost server at [http://grafana.lndo.site](http://grafana.lndo.site).
 
 There are default settings applied that removes the admin login, so you should be redirected to the Grafana overview page.
 
-### Import Data
+## Import Data
 
-#### 1. Connect to database through Sequel Pro
+### 1. Connect to database through Sequel Pro
 
 Open Sequel Pro, connect to the database, and import the CSV. You can use the supplied `.plist` to populate your connection settings using the import option at the bottom of the left sidebar.
 
@@ -64,7 +67,7 @@ Pass: fastly
 Data: fastly
 ```
 
-#### 2. Import CSV as table
+### 2. Import CSV as table
 
 1. Go to File -> Import
 2. Select your CSV file (choose `Latin-DOS` encoding if you don't want it to scream.)
