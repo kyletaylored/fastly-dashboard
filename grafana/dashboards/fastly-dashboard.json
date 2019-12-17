@@ -270,7 +270,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT DISTINCT SUBSTRING_INDEX(url,'?', 1) AS resource, COUNT(SUBSTRING_INDEX(url,'?', 1)) AS resource_count, now() as time_sec FROM $db_table GROUP BY SUBSTRING_INDEX(url,'?', 1) ORDER BY resource_count DESC limit 100;",
+          "rawSql": "SELECT SUBSTRING_INDEX(url,'?', 1) AS resource, COUNT(SUBSTRING_INDEX(url,'?', 1)) AS resource_count, now() as time_sec FROM $db_table GROUP BY SUBSTRING_INDEX(url,'?', 1) ORDER BY resource_count DESC limit 20;",
           "refId": "A",
           "select": [
             [
@@ -294,7 +294,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Top 100 Requests",
+      "title": "Top 20 Requests",
       "type": "grafana-piechart-panel",
       "valueName": "current"
     },
@@ -336,7 +336,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT now() as time_sec, ip, COUNT(ip) AS ip_count FROM $db_table GROUP BY ip ORDER BY ip_count DESC limit 100;",
+          "rawSql": "SELECT now() as time_sec, ip, COUNT(ip) AS ip_count FROM $db_table GROUP BY ip ORDER BY ip_count DESC limit 20;",
           "refId": "A",
           "select": [
             [
@@ -360,7 +360,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Top 100 IPs",
+      "title": "Top 20 IPs",
       "type": "grafana-piechart-panel",
       "valueName": "current"
     },
@@ -401,7 +401,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT DISTINCT user_agent, COUNT(user_agent) AS user_agent_count, now() as time_sec FROM $db_table GROUP BY user_agent ORDER BY user_agent_count DESC limit 100;",
+          "rawSql": "SELECT user_agent, COUNT(user_agent) AS user_agent_count, now() as time_sec FROM $db_table GROUP BY user_agent ORDER BY user_agent_count DESC limit 20;",
           "refId": "A",
           "select": [
             [
@@ -425,7 +425,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Top 100 User Agents",
+      "title": "Top 20 User Agents",
       "type": "grafana-piechart-panel",
       "valueName": "current"
     },
@@ -476,7 +476,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT DISTINCT user_agent, COUNT(user_agent) AS user_agent_count FROM $db_table GROUP BY user_agent ORDER BY user_agent_count DESC;",
+          "rawSql": "SELECT user_agent, COUNT(user_agent) AS user_agent_count FROM $db_table GROUP BY user_agent ORDER BY user_agent_count DESC;",
           "refId": "A",
           "select": [
             [
@@ -550,7 +550,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT DISTINCT SUBSTRING_INDEX(url,'?', 1) AS resource, COUNT(SUBSTRING_INDEX(url,'?', 1)) AS resource_count FROM $db_table GROUP BY SUBSTRING_INDEX(url,'?', 1) ORDER BY resource_count DESC;",
+          "rawSql": "SELECT SUBSTRING_INDEX(url,'?', 1) AS resource, COUNT(SUBSTRING_INDEX(url,'?', 1)) AS resource_count FROM $db_table GROUP BY resource ORDER BY resource_count DESC;",
           "refId": "A",
           "select": [
             [

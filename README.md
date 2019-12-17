@@ -36,35 +36,37 @@ If you do have it, just start Lando using the provided lando.yml.
 lando start
 ```
 
+At this point, a number of things are happening:
+
+1. Grafana and MariaDB containers are being created.
+2. Grafana is being proxied through `http://grafana.lndo.site`.
+3. Datasource and dashboards are being provisioned and imported.
+
 #### 3. Log into Grafana
 
 Open the localhost server at [http://grafana.lndo.site](http://grafana.lndo.site).
 
 There are default settings applied that removes the admin login, so you should be redirected to the Grafana overview page.
 
-### Setting up the Dashboard
+### Import Data
 
-#### 1. Configure the data connector.
-
-1. Go to the [Datasources](http://grafana.lndo.site/datasources) page
-2. Click **Add data source**.
-3. Select MySQL
-4. Enter a name (can be anything), and check "Default"
-5. Enter the following connection details:
-```
-Host: database.fastlygrafana.internal:32769
-Database: fastly
-User: fastly
-Password: fastly
-```
-
-6. Click "Save and Test" - confirm working datasource.
-
-#### 2. Import dashboard
-
-While on Dashboard home page, click "Home" menu on the left top corner and select "Import dashboard" option to upload the JSON file located at `./grafana/dashboard/fastly-dashboard.json`.
-
-#### 3 Import CSV as table through Sequel Pro
+#### 1. Connect to database through Sequel Pro
 
 Open Sequel Pro, connect to the database, and import the CSV. You can use the supplied `.plist` to populate your connection settings using the import option at the bottom of the left sidebar.
 
+If manually connecting, use the following credentials:
+
+```bash
+Mode: TCP/IP
+Host: localhost:32769
+User: fastly
+Pass: fastly
+Data: fastly
+```
+
+#### 2. Import CSV as table
+
+1. Go to File -> Import
+2. Select your CSV file (choose `Latin-DOS` encoding if you don't want it to scream.)
+3. Make all field types `LONGTEXT`, give table a name, preferably in this format: `<SITE CODE>_<DATE PULL>`, i.e `example_12_08_19`.
+4. Click import.
