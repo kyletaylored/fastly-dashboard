@@ -18,5 +18,8 @@ services:
       ports: [3000:3000]
       environment:
         GF_INSTALL_PLUGINS: grafana-piechart-panel
+        GF_AUTH_DISABLE_LOGIN_FORM: "true"
+        GF_AUTH_ANONYMOUS_ENABLED: "true"
+        GF_AUTH_ANONYMOUS_ORG_ROLE: "Admin"
       # Required (entry point for Grafana container)
       command: /run.sh

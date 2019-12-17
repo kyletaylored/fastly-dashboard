@@ -1,9 +1,12 @@
 datasources:
-- name: 'MySQL'
-  type: 'mysql'
-  access: 'proxy'
-  org_id: 1
-  url: 'http://localhost:3306'
-  is_default: true
-  version: 1
-  editable: true
+  - name: 'MySQL'
+    type: 'mysql'
+    access: 'proxy'
+    org_id: 1
+    url: 'http://localhost:3306'
+    is_default: true
+    version: 1
+    editable: true
+    password: fastly
+    user: fastly
+    database: fastly
