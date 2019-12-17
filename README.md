@@ -36,45 +36,23 @@ If you do have it, just start Lando using the provided lando.yml.
 lando start
 ```
 
-#### 3. Install Grafana on Mac, with plugins
+#### 3. Log into Grafana
 
-Install Grafana via homebrew
-```bash
-brew install grafana
-```
+Open the localhost server at [http://grafana.lndo.site](http://grafana.lndo.site).
 
-Install brew services
-```bash
-brew tap homebrew/services
-brew services start grafana
-```
-
-Install Grafana plugins: pie-chart
-```bash
-grafana-cli plugins install grafana-piechart-panel
-brew services restart grafana
-```
-
-#### 4. Log into Grafana
-
-Open the localhost server at [localhost:3000](http://localhost:3000).
-```
-Host: localhost:3000
-User: admin
-Pass: admin
-```
+There are default settings applied that removes the admin login, so you should be redirected to the Grafana overview page.
 
 ### Setting up the Dashboard
 
 #### 1. Configure the data connector.
 
-1. Go to the [Datasources](http://localhost:3000/datasources) page
+1. Go to the [Datasources](http://grafana.lndo.site/datasources) page
 2. Click **Add data source**.
 3. Select MySQL
 4. Enter a name (can be anything), and check "Default"
 5. Enter the following connection details:
 ```
-Host: localhost:32769
+Host: database.fastlygrafana.internal:32769
 Database: fastly
 User: fastly
 Password: fastly
@@ -84,7 +62,7 @@ Password: fastly
 
 #### 2. Import dashboard
 
-While on Dashboard home page, click "Home" menu on the left top corner and select "Import dashboard" option to upload a JSON file.
+While on Dashboard home page, click "Home" menu on the left top corner and select "Import dashboard" option to upload the JSON file located at `./grafana/dashboard/fastly-dashboard.json`.
 
 #### 3 Import CSV as table through Sequel Pro
 
