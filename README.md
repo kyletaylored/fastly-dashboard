@@ -15,7 +15,7 @@ Run the following script to download the repository and auto-install the depende
 curl -fsSL https://raw.githubusercontent.com/kyletaylored/fastly-dashboard/master/install.sh | bash
 ```
 
-### Manual install.
+### Manual install
 
 #### 1. Download the repo
 Download and cd into the repo.
