@@ -34,7 +34,7 @@ brew cask install lando
 
 ### 1. Start Lando
 
-If you do have it, just start Lando using the provided lando.yml.
+If you do have it, just start Lando using the provided `lando.yml`.
 ```bash
 lando start
 ```
