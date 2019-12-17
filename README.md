@@ -47,9 +47,9 @@ At this point, a number of things are happening:
 
 ### 2. Log into Grafana
 
-Open the localhost server at [http://grafana.lndo.site](http://grafana.lndo.site).
+Open the localhost server at [http://grafana.lndo.site/dashboards](http://grafana.lndo.site/dashboards).
 
-There are default settings applied that removes the admin login, so you should be redirected to the Grafana overview page.
+There are default settings applied that removes the admin login, so you should be redirected to the Grafana dashboard page with the Fastly Dashboard installed.
 
 ## Import Data
 

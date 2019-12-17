@@ -23,7 +23,7 @@ declare -a expressions=("your mother's maiden name" "the name of your first pet"
 selectedexpression=${expressions[$RANDOM % ${#expressions[@]} ]}
 
 # Welcome
-echo_green "Welcome to the Fastly Dashboad."
+echo_green "Welcome to the Grafana Dashboard."
 echo -e "To get started, please enter ${yellow}$selectedexpression${NC}:"
 sleep 5
 echo_red "Just kidding."
