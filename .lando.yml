@@ -10,6 +10,10 @@ services:
       user: fastly
       password: fastly
       database: fastly
+  cache:
+    type: redis
+    persist: false
+    portforward: 6379
   grafana:
     type: compose
     services:
