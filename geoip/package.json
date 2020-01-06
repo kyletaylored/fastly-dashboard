@@ -4,14 +4,22 @@
   "description": "Generate GeoIP map for Fastly logs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "Kyle Taylor",
   "license": "ISC",
   "dependencies": {
+    "@keyv/sqlite": "^2.0.2",
+    "cli-progress": "^3.4.0",
+    "commander": "^4.0.1",
     "fast-csv": "^4.0.2",
     "ipinfo": "^1.3.9",
+    "keyv": "^4.0.0",
     "path": "^0.12.7",
-    "pouchdb": "^7.1.1"
+    "precise-typeof": "^2.0.1"
+  },
+  "bin": {
+    "geoip": "./index.js"
   }
 }
