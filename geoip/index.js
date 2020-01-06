@@ -7,6 +7,7 @@ const readline = require('readline');
 const Keyv = require('keyv');
 const program = require('commander');
 const typeOf = require('precise-typeof');
+const delay = require('delay');
 
 // Get CLI options
 program
@@ -91,7 +92,7 @@ async function getIpInfo(ip) {
 
   // Fetch new data.
   if (typed !== 'object' || (ipcache.hasOwnProperty('ip') && ipcache.ip == '')) {
-    ipcache = formatIpInfo(ip, ipcache);
+    ipcache = await formatIpInfo(ip, ipcache);
   }
 
   // Retry after checking for error response from IPinfo
@@ -111,7 +112,10 @@ async function getIpInfo(ip) {
  * Extract and format IP info.
  * @param {string} ip
  */
-function formatIpInfo(ip, cache) {
+async function formatIpInfo(ip, cache) {
+  // One request per second.
+  delay(1000);
+
   // Create template.
   let ipdata = {
     ip: '',
@@ -134,7 +138,7 @@ function formatIpInfo(ip, cache) {
   }
 
   // Fetch IP data.
-  if (ipdata.retry > 4) {
+  if (ipdata.retry < 4) {
     ipInfo(ip, ipinfoKey, (err, info) => {
       // Check if result is valid
       if (typeof info == 'object') {
